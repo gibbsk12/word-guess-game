@@ -43,4 +43,3 @@ for (i = 0; i < numberOfBlanks; i++) {
     answerArray.push("_");
     console.log(answerArray); 
 }
-
