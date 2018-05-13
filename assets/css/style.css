@@ -24,5 +24,11 @@ body, html {
     color: white;
 }
 h1{
-    font-family: 'Passion One', cursive;
+    font-family: 'Skranji', cursive;
+    color: #e6a22d;
+}
+
+.Harry{
+    width: 100%;
+    color: white;
 }
