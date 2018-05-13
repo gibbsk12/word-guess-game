@@ -24,16 +24,15 @@ var words = [
     "stupefy",
 ]
 
-// Starts a New Game
-
 // Chooses a Word from Array
 var chosenWord = words[Math.floor(Math.random() * words.length)]
 console.log(chosenWord);
 
 // Sets Game Variables
-guessesLeft = 10;
-wrongLetters = [];
-answerArray = [];
+guessesLeft = 10; //Number of tries a player has to guess the word 
+previousGuesses = []; //Letters already guessed
+answerArray = []; //The dashes and letters guessed
+winNumber = []; //Number of Wins 
 
 // Sets up Number of Blanks Needed
 var numberOfBlanks = chosenWord.length;
@@ -41,5 +40,6 @@ console.log(numberOfBlanks);
 
 for (i = 0; i < numberOfBlanks; i++) {
     answerArray.push("_");
-    console.log(answerArray); 
+    console.log(answerArray);
 }
+
