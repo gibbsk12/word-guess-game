@@ -23,34 +23,82 @@ var words = [
     "scourgify",
     "stupefy",
 ]
-
 // Sets Game Variables
-guessesLeft = 10; //Number of tries a player has to guess the word 
-previousGuesses = []; //Letters already guessed
-answerArray = []; //The dashes and letters guessed
-winNumber = []; //Number of Wins 
-
+var guessesLeft = 10; //Number of tries a player has to guess the word 
+var previousGuesses = []; //Letters already guessed
+var answerArray = []; //The dashes and letters guessed
+var winNumber = 0; //Number of Wins 
+var chosenWord;
+var wordSpace = document.getElementById("currentWord");
+var letterGuesses = document.getElementById("previousGuesses");
+var guessesRemaining = document.getElementById("numberOfGuessesLeft");
+var winCount = document.getElementById("numberOfWins");
+var alphabet = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ];
 // Chooses a Word from Array
-var chosenWord = words[Math.floor(Math.random() * words.length)]
-console.log(chosenWord);
 
-// Sets up Number of Blanks Needed
-var numberOfBlanks = chosenWord.length;
-console.log(numberOfBlanks);
+// 
+function startNewGame() {
+    answerArray = [];
+    previousGuesses = [];
+    guessesLeft = 10;
 
-for (var i = 0; i < numberOfBlanks; i++) {
-    answerArray.push("_");
-    // console.log(answerArray);
+    chosenWord = words[Math.floor(Math.random() * words.length)]
+    console.log(chosenWord);
+
+    // Sets up Number of Blanks Neede
+
+    for (var i = 0; i < chosenWord.length; i++) {
+        answerArray.push("_");
+        console.log(answerArray);
+        wordSpace.innerHTML = answerArray.join(" ");
+    }
+
+    letterGuesses.innerHTML = previousGuesses;
+    guessesRemaining.innerHTML = guessesLeft;
+    
 }
 
-var currentWordState = "";
-
-for (var i = 0; i < answerArray.length; i++) {
-    currentWordState += answerArray[i] + " ";
+function updateWords(letter) {
+    if (chosenWord.indexOf(letter) === -1 && alphabet.indexOf(letter) >= 0) {
+        previousGuesses.push(letter);
+        letterGuesses.innerHTML = previousGuesses.join(", ");
+        guessesLeft--;
+        guessesRemaining.innerHTML = guessesLeft;
+    } else if (chosenWord.indexOf(letter) >= 0 && alphabet.indexOf(letter) >= 0) {
+        for (var i = 0; i < chosenWord.length; i++) {
+            if (chosenWord[i] === letter) {
+                answerArray[i] = letter;
+            }
+            wordSpace.innerHTML = answerArray.join(" ")
+        }
+    }
 
 }
 
+function youWon () {
+    winNumber++;
+    winCount.innerHTML = winNumber;
 
-document.getElementById("currentWord").innerHTML = currentWordState;
+}
 
-// answerArray;
+function didYouWin() {
+    if (answerArray.indexOf("_") === -1) {
+        alert("you won!");
+        youWon();
+        startNewGame();
+    } else if (guessesLeft === 0) {
+        alert("you lost");
+        startNewGame();
+    }
+
+}
+
+// Whenever a key is pressed
+document.onkeyup = function (event) {
+    var humanInput = event.key;
+    updateWords(humanInput);
+    didYouWin();
+    console.log(humanInput);
+}
+
+window.onload = startNewGame();
