@@ -53,17 +53,17 @@ function startNewGame() {
         wordSpace.innerHTML = answerArray.join(" ");
     }
 
-    letterGuesses.innerHTML = previousGuesses;
-    guessesRemaining.innerHTML = guessesLeft;
+    letterGuesses.innerHTML = "Previous Guesses: " + previousGuesses;
+    guessesRemaining.innerHTML = "Number of Guesses: " + guessesLeft;
     
 }
 
 function updateWords(letter) {
     if (chosenWord.indexOf(letter) === -1 && alphabet.indexOf(letter) >= 0) {
         previousGuesses.push(letter);
-        letterGuesses.innerHTML = previousGuesses.join(", ");
+        letterGuesses.innerHTML = "Previous Guesses: " + previousGuesses.join(", ");
         guessesLeft--;
-        guessesRemaining.innerHTML = guessesLeft;
+        guessesRemaining.innerHTML = "Number of Guesses: " + guessesLeft;
     } else if (chosenWord.indexOf(letter) >= 0 && alphabet.indexOf(letter) >= 0) {
         for (var i = 0; i < chosenWord.length; i++) {
             if (chosenWord[i] === letter) {
@@ -77,17 +77,17 @@ function updateWords(letter) {
 
 function youWon () {
     winNumber++;
-    winCount.innerHTML = winNumber;
+    winCount.innerHTML = "Number of Wins: " + winNumber;
 
 }
 
 function didYouWin() {
     if (answerArray.indexOf("_") === -1) {
-        alert("you won!");
+        alert("You're a word wizard!");
         youWon();
         startNewGame();
     } else if (guessesLeft === 0) {
-        alert("you lost");
+        alert("You've lost, old friend!");
         startNewGame();
     }
 

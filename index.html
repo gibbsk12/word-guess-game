@@ -1,26 +1,26 @@
 <head>
     <title>Harry Potter Word Game</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel = "stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Skranji" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 
 </head>
 
 <body>
-    
+
     <div class="bg">
         <div class="container">
             <img class="Harry" src="./assets/images/HarryPotterLogo.png">
-            <h1>and the Magical Word</h1><br>
-            <p> Press any letter to get started!</p>
-            <br>
-            <p>Current Word:</p>
-            <span id="currentWord"></span></p><br></p>
-            <p>Number of Wins: <span id="numberOfWins"></span></p><br>
-            <p>Number of Guesses: <span id="numberOfGuessesLeft"></span></p><br>
-            <p>Previous Guesses:
-            <span id="previousGuesses"></span></p>
+            <h1>and the Magical Word</h1>
+            <div class="gameText">
+                <p> Press any letter to get started!</p>
+                <p>Current Word:</p>
+                <span id="currentWord"></span>
+                <p id="numberOfWins">Number of Wins: 0</p>
+                <p id="numberOfGuessesLeft">Number of Guesses: 10</p>
+                <p id="previousGuesses">Previous Guesses:</p>
+            </div>
         </div>
     </div>
 
