@@ -82,12 +82,17 @@ function youWon() {
 
 }
 
+//Creates a function for the alert in order to use setTimeout
+function alertWin(){
+    alert("You're a word wizard!");
+}
+
 //Alerts user if they won or lost
 function didYouWin() {
     if (answerArray.indexOf("_") === -1) {
-        alert("You're a word wizard!");
+        var slowWinAlert = setTimeout(alertWin, 500);
         youWon();
-        startNewGame();
+        var SlowReset = setTimeout(startNewGame, 500);
     } else if (guessesLeft === 0) {
         alert("You've lost, old friend!");
         startNewGame();
