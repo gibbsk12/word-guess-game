@@ -44,11 +44,9 @@ function startNewGame() {
     guessesLeft = 10;
     //Chooses a random word 
     chosenWord = words[Math.floor(Math.random() * words.length)]
-    console.log(chosenWord);
     // Sets up Number of Blanks Needed
     for (var i = 0; i < chosenWord.length; i++) {
         answerArray.push("_");
-        console.log(answerArray);
         wordSpace.innerHTML = answerArray.join(" ");
     }
     //Rewrites variables
@@ -108,7 +106,6 @@ document.onkeyup = function (event) {
     var humanInput = event.key;
     updateWords(humanInput);
     didYouWin();
-    console.log(humanInput);
 }
 
 //What happens when the page loads 
