@@ -59,10 +59,13 @@ function startNewGame() {
 function updateWords(letter) {
     //If the letter does not match, then letter is added to previous guesses and a turn is lost.
     if (chosenWord.indexOf(letter) === -1 && alphabet.indexOf(letter) >= 0) {
+        if (previousGuesses.indexOf(letter) >= 0){
+        }
+        else{
         previousGuesses.push(letter);
         letterGuesses.innerHTML = "Previous Guesses: " + previousGuesses.join(", ");
         guessesLeft--;
-        guessesRemaining.innerHTML = "Number of Guesses: " + guessesLeft;
+        guessesRemaining.innerHTML = "Number of Guesses: " + guessesLeft;}
     //If the letter matches, then letter is added to answerArray
     } else if (chosenWord.indexOf(letter) >= 0 && alphabet.indexOf(letter) >= 0) {
         for (var i = 0; i < chosenWord.length; i++) {
